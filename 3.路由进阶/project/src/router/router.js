@@ -4,22 +4,39 @@ export default [
     path: '/',
     name:'home',
     alias:'/home_page', //别名
-    component: Home
+    component: Home,
+    props:route => ({ //函数传参
+      food:route.query.food
+    }),
+    beforeEnter: (to, from, next) => {  //路由内守卫
+      // if(from.name === 'about') alert('from about page')
+      // else alert('this page is not from about page')
+      next()
+    }
+  },
+  {
+    path:'/login',
+    name:'login',
+    component: () => import('../views/login.vue')
   },
   {
     path: '/about',
     name:'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+    props:{ //对像传值
+      food:'banna'
+    },
+    meta:{ // 路由元信息
+      title:'about'
+    }
   },
 
   //动态路由
   {
     path:'/argu/:name',
     name:'argu',
-    component: () => import('@/views/argu.vue')
+    component: () => import('@/views/argu.vue'),
+    props:true  //动态路由传参
   },
 
   //嵌套路由
@@ -51,5 +68,9 @@ export default [
         name:'home'
       }
     }
+  },
+  {
+    path:'*',
+    component:() => import('../views/404.vue')
   }
 ]

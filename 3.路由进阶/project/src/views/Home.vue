@@ -4,7 +4,9 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到argu</button>
     <button @click="handleClick('replace')">替换到parent</button>
+    <p>{{food}}</p>
   </div>
+  
 </template>
 
 <script>
@@ -15,6 +17,17 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  props:{
+    food:{
+      type:String,
+      default:'apple'
+    }
+  },
+  beforeRouteLeave (to, from, next) {
+    const leave = confirm('是否确定要离开')
+    if(leave) next()
+    else next(false)
   },
   methods: {
     handleClick(type){
