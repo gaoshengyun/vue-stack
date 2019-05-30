@@ -8,6 +8,9 @@
 
     <p>appName:{{appName}},appNameWithVersion:{{appNameWithVersion}},mapgetters:{{appWithVersion}}</p>
     <p>userName:{{userName}},firstLetter:{{firstLetter}}</p>
+    <button @click="handlechangeAppname">修改appName</button>
+    <p>{{appVersion}}</p>
+    <button @click="changeUserName">修改username</button>
   </div>
 </template>
 <script>
@@ -29,7 +32,8 @@ export default {
    
     ...mapState({
       appName:state => state.appName,
-      userName: state => state.user.userName
+      userName: state => state.user.userName,
+      appVersion: state => state.appVersion
     }),
 
     ...mapGetters([
@@ -52,10 +56,21 @@ export default {
     inputValueLastLetter(){
       return this.inputValue.substr(-1,1)
     }
-  },
+  }, 
   methods: {
     handleInput(val){
       this.inputValue = val
+    },
+    handlechangeAppname(){
+      // this.$store.commit('SET_APP_NAME','newAppName')
+      this.$store.commit({
+        type:'SET_APP_NAME',
+        appName:'ne11wAppName'
+      }),
+      this.$store.commit('SET_APP_VERSION')
+    },
+    changeUserName(){
+      this.$store.commit('SET_USER_NAME','vue-stack')
     }
   },
 }
