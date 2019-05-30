@@ -16,7 +16,7 @@
 <script>
 import AInput from '../components/AInput'
 import AShow from '../components/AShow'
-import {mapState,mapGetters} from 'vuex'
+import {mapState,mapGetters,mapActions} from 'vuex'
 export default {
   name:'store',
   data() {
@@ -61,13 +61,17 @@ export default {
     handleInput(val){
       this.inputValue = val
     },
+    ...mapActions([
+      'updateAppName'
+    ]),
     handlechangeAppname(){
       // this.$store.commit('SET_APP_NAME','newAppName')
-      this.$store.commit({
-        type:'SET_APP_NAME',
-        appName:'ne11wAppName'
-      }),
-      this.$store.commit('SET_APP_VERSION')
+      // this.$store.commit({
+      //   type:'SET_APP_NAME',
+      //   appName:'ne11wAppName'
+      // }),
+      // this.$store.commit('SET_APP_VERSION')
+      this.updateAppName()
     },
     changeUserName(){
       this.$store.commit('SET_USER_NAME','vue-stack')
