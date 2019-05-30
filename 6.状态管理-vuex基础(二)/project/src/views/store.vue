@@ -11,6 +11,8 @@
     <button @click="handlechangeAppname">修改appName</button>
     <p>{{appVersion}}</p>
     <button @click="changeUserName">修改username</button>
+    <button @click="registerModule">动态注册模块</button>
+    <p v-for="(item, index) in todoList" :key="index">{{item}}</p>
   </div>
 </template>
 <script>
@@ -33,7 +35,8 @@ export default {
     ...mapState({
       appName:state => state.appName,
       userName: state => state.user.userName,
-      appVersion: state => state.appVersion
+      appVersion: state => state.appVersion,
+      todoList: state => state.user.todo ? state.user.todo.todoList : []
     }),
 
     ...mapGetters([
@@ -75,6 +78,16 @@ export default {
     },
     changeUserName(){
       this.$store.commit('SET_USER_NAME','vue-stack')
+    },
+    registerModule(){
+      this.$store.registerModule(['user','todo'],{
+        state:{
+          todoList:[
+            '学习mutations',
+            '学习actions'
+          ]
+        }
+      })
     }
   },
 }

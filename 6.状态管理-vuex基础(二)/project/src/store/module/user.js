@@ -14,12 +14,19 @@ const mutations = {
   }
 }
 
-const actions = {}
+const actions = {
+  updateUserName({commit,state,rootState,dispatch}){
+
+  }
+}
 
 export default {
   namespace:true,
   state,
   mutations,
   actions,
-  getters
+  getters,
+  modules:{
+
+  }
 }
