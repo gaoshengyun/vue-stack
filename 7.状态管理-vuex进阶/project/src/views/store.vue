@@ -75,6 +75,7 @@ export default {
       // }),
       // this.$store.commit('SET_APP_VERSION')
       this.updateAppName()
+      // this.$store.state.user.userName = 'haha'
     },
     changeUserName(){
       this.$store.commit('SET_USER_NAME','vue-stack')
