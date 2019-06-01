@@ -14,6 +14,15 @@ module.exports = {
   //打包时不生成map文件
   productionSourceMap:false,
   devServer:{
-    // proxy:'http://localhost:4000'
+    //开记代理
+    proxy:'http://m.kugou.com'
   }
 }
+
+//服务器设置方法
+/**
+ * 所有request设置header
+ * res.header('Access-Control-Allow-Origin','*')
+ * res.header('Access-Control-Allow-Headers','X-Requested-With,Content-Type')
+ * res.header('Access-Control-Allow-Methods','PUT,GET,POST,DELETE,OPTIONS')
+ */

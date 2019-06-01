@@ -4,6 +4,7 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到argu</button>
     <button @click="handleClick('replace')">替换到parent</button>
+    <button @click="getInfo">请求数据</button>
     <p>{{food}}</p>
   </div>
   
@@ -12,6 +13,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
   name: 'home',
@@ -49,6 +51,11 @@ export default {
         })
       }
       
+    },
+    getInfo(){
+      axios.get('/plist/index?json=true').then(res => {
+        console.log(res)
+      })
     }
   },
 }
