@@ -13,7 +13,8 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import axios from 'axios'
+// import axios from 'axios'
+import {getUserInfo} from '../api/user'
 
 export default {
   name: 'home',
@@ -53,8 +54,11 @@ export default {
       
     },
     getInfo(){
-      axios.get('/plist/index?json=true').then(res => {
-        console.log(res)
+      // axios.get('/plist/index?json=true').then(res => {
+      //   console.log(res)
+      // })
+      getUserInfo().then(res => {
+        console.log('res:  ',res)
       })
     }
   },
