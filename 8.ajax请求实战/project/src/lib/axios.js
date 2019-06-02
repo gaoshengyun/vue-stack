@@ -1,4 +1,4 @@
-//封闭axios
+//封装axios
 import axios from 'axios'
 import { baseURL } from '@/config'
 class HttpRequest {
