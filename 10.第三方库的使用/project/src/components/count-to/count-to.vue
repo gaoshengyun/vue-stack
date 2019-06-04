@@ -1,12 +1,13 @@
 <template>
   <div>
     <slot name="left"></slot>
-    <span :class="countClass" :id="eleId"></span>
+    <span :class="countClass" ref="number" :id="eleId"></span>
     <slot name="right"></slot>
   </div>
 </template>
 <script>
 import CountUp from 'countup'
+import './count-to.less'
 export default {
   name:'CountTo',
   computed: {
@@ -67,6 +68,25 @@ export default {
       default:''
     }
   },
+  methods: {
+    getCount(){
+      // console.log(this.$refs.number.innerText)
+      return this.$refs.number.innerText
+    },
+    emtEndEvent(){
+      setTimeout(()=>{
+        this.$nextTick(()=>{
+          this.$emit('on-animation-end',Number(this.getCount()))
+        })
+      },this.duration*1000)
+    }
+  },
+  watch: {
+    endVal(newVal,oldVal){
+      this.counter.update(newVal)
+      this.emtEndEvent()
+    }
+  },
   mounted() {
     this.$nextTick(()=>{
       this.counter = new CountUp(this.eleId,this.startVal,this.endVal,this.decimals,this.duration,{
@@ -77,6 +97,7 @@ export default {
       })
       setTimeout(()=>{
         this.counter.start()
+        this.emtEndEvent()
       },this.delay)
     })
   },
