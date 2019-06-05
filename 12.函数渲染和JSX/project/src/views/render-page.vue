@@ -1,6 +1,7 @@
 <template>
   <div>
-    <list :list="list" :style="{color:'red'}" :render="renderFunc"></list>
+    <!-- <list :list="list" :style="{color:'red'}" :render="renderFunc"></list> -->
+    <count-to slot-scope="count" :end-val="count.number"></count-to>
   </div>
 </template>
 <script>
@@ -16,7 +17,8 @@ export default {
     }
   },
   components:{
-    List
+    List,
+    CountTo
   },
   methods: {
     renderFunc(h,number){

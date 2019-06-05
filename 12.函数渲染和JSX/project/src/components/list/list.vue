@@ -1,9 +1,9 @@
 <template>
   <ul>
     <li v-for="(item, index) in list" :key="`item_${index}`">
-       <!-- {{item.number}} -->
-      <span v-if="!render"> {{item.number}} </span>
-      <rendom-dom v-else :render-func="render" :number="item.number"></rendom-dom>
+      <!-- <span v-if="!render"> {{item.number}} </span>
+      <rendom-dom v-else :render-func="render" :number="item.number"></rendom-dom> -->
+      <slot :number="item.number"></slot>
     </li>
   </ul>
 </template>
