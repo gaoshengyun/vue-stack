@@ -1,8 +1,9 @@
 <template>
   <ul>
     <li v-for="(item, index) in list" :key="`item_${index}`">
-      <span v-if="!render"> {{item.name}} </span>
-      <rendom-dom v-else :render-func="render" :name="item.name"></rendom-dom>
+       <!-- {{item.number}} -->
+      <span v-if="!render"> {{item.number}} </span>
+      <rendom-dom v-else :render-func="render" :number="item.number"></rendom-dom>
     </li>
   </ul>
 </template>
@@ -22,6 +23,9 @@ export default {
   },
   components:{
     RendomDom
-  }
+  },
+  mounted() {
+    console.log(this.list[0].number)
+  },
 }
 </script>
