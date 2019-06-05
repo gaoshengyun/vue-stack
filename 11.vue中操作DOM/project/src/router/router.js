@@ -43,6 +43,11 @@ export default [
     name:'count_to',
     component: () => import('@/views/count-to.vue')
   },
+  {
+    path:'/split-pane',
+    name:'split_pane',
+    component: () => import('@/views/split-pane.vue')
+  },
 
   //嵌套路由
   {
