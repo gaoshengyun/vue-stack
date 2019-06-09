@@ -1,11 +1,30 @@
 <template>
   <div class="home">
     
-    <button @click="handleClick('back')">返回上一页</button>
+    <!-- <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到argu</button>
     <button @click="handleClick('replace')">替换到parent</button>
     <button @click="getInfo">请求数据</button>
-    <p>{{food}}</p>
+    <p>{{food}}</p> -->
+
+    <Row>
+      <Col></Col>
+    </Row>
+    <Row :gutter="10">
+      <Col span="12"></Col>
+      <Col span="12"></Col>
+    </Row>
+    <Row :gutter="10">
+      <Col span="8"></Col>
+      <Col span="8"></Col>
+      <Col span="8"></Col>
+    </Row>
+    <Row :gutter="10" class="blue">
+      <Col :md="6" :sm="12" :xs="24"></Col>
+      <Col :md="6" :sm="12" :xs="24"></Col>
+      <Col :md="6" :sm="12" :xs="24"></Col>
+      <Col :md="6" :sm="12" :xs="24"></Col>
+    </Row>
   </div>
   
 </template>
@@ -64,3 +83,20 @@ export default {
   },
 }
 </script>
+<style lang="less">
+.home{
+  .ivu-col{
+    height: 50px;
+    background-color: pink;
+    margin-top: 10px;
+    background-clip: content-box;
+  }
+  .blue{
+    .ivu-col{
+      background:blue;
+      background-clip: content-box;
+    }
+  }
+}
+</style>
+

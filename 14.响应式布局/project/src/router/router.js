@@ -1,18 +1,25 @@
 import Home from '@/views/Home'
+import Layout from '../views/layout.vue'
 export default [
   {
     path: '/',
     name:'home',
-    alias:'/home_page', //别名
-    component: Home,
-    props:route => ({ //函数传参
-      food:route.query.food
-    }),
-    beforeEnter: (to, from, next) => {  //路由内守卫
-      // if(from.name === 'about') alert('from about page')
-      // else alert('this page is not from about page')
-      next()
-    }
+    // alias:'/home_page', //别名
+    component: Layout,
+    children:[
+      {
+        path:'home',
+        component:Home
+      }
+    ]
+    // props:route => ({ //函数传参
+    //   food:route.query.food
+    // }),
+    // beforeEnter: (to, from, next) => {  //路由内守卫
+    //   // if(from.name === 'about') alert('from about page')
+    //   // else alert('this page is not from about page')
+    //   next()
+    // }
   },
   {
     path:'/login',
