@@ -1,7 +1,7 @@
 <template>
   <div class="side-menu-wrapper">
     <slot></slot>
-    <Menu v-if="!collapsed" width="auto" theme="dark">
+    <Menu v-show="!collapsed" width="auto" theme="dark">
       <template v-for="(item, index) in list">
         <re-submenu 
           v-if="item.children" 
@@ -14,7 +14,7 @@
         <menu-item v-else :key="`menu_${item.name}`" :name="item.name"><Icon :type="item.icon" /> {{item.title}} </menu-item>
       </template>
     </Menu>
-    <div v-else class="drop-wrapper">
+    <div v-show="collapsed" class="drop-wrapper">
       <template v-for="(item, index) in list">
         <re-dropdown v-if="item.children" :showTitle="false" icon-color="#fff" :key="`drop_${item.name}`" :parent="item"></re-dropdown>
         <Tooltip v-else transfer :content="item.title" placement="right" :key="`drop_${item.name}`">
