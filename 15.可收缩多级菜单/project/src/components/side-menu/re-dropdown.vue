@@ -1,5 +1,5 @@
 <template>
-  <Dropdown placement="right-start">
+  <Dropdown @on-click="handleClick" placement="right-start">
     <span class="drop-menu-span" :style="">
       <Icon :type="parent.icon" :color="iconColor" :size="20" />
       <span v-if="showTitle"> {{parent.title}} </span>
@@ -37,6 +37,14 @@ export default {
       return {
         textAlign:this.showTitle?'left':'center',
         paddingLeft:this.showTitle?'1px':''
+      }
+    }
+  },
+  methods: {
+    handleClick(name){
+      if(!this.showTitle){
+        console.log(name)
+        this.$emit('on-select',name)
       }
     }
   },

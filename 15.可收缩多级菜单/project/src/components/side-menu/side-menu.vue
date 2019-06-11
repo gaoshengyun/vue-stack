@@ -1,7 +1,7 @@
 <template>
   <div class="side-menu-wrapper">
     <slot></slot>
-    <Menu v-show="!collapsed" width="auto" theme="dark">
+    <Menu v-show="!collapsed" width="auto" theme="dark" @on-select="handleSelect">
       <template v-for="(item, index) in list">
         <re-submenu 
           v-if="item.children" 
@@ -16,9 +16,9 @@
     </Menu>
     <div v-show="collapsed" class="drop-wrapper">
       <template v-for="(item, index) in list">
-        <re-dropdown v-if="item.children" :showTitle="false" icon-color="#fff" :key="`drop_${item.name}`" :parent="item"></re-dropdown>
+        <re-dropdown @on-select="handleSelect" v-if="item.children" :showTitle="false" icon-color="#fff" :key="`drop_${item.name}`" :parent="item"></re-dropdown>
         <Tooltip v-else transfer :content="item.title" placement="right" :key="`drop_${item.name}`">
-          <span class="drop-menu-span">
+          <span @click="handleClick(item.name)" class="drop-menu-span">
             <Icon :type="item.icon" color="#fff" :size="20" />
           </span>
         </Tooltip>
@@ -44,7 +44,15 @@ export default {
       type:Array,
       default:() => []
     }
-  }
+  },
+  methods: {
+    handleSelect(name){
+      console.log(name)
+    },
+    handleClick(name){
+      console.log(name)
+    }
+  },
 }
 </script>
 <style lang="less">
