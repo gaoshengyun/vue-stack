@@ -15,7 +15,7 @@ module.exports = {
   productionSourceMap:false,
   devServer:{
     //开记代理
-    proxy:'http://m.kugou.com'
+    // proxy:'http://m.kugou.com'
   }
 }
 

@@ -1,5 +1,6 @@
 import Home from '@/views/Home'
 import Layout from '../views/layout.vue'
+import Table from '../views/table.vue'
 export default [
   {
     path: '/',
@@ -10,6 +11,10 @@ export default [
       {
         path:'home',
         component:Home
+      },
+      {
+        path:'table',
+        component:Table
       }
     ]
     // props:route => ({ //函数传参
